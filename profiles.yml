@@ -1,0 +1,8 @@
+bookrestaurant_duckdb:
+
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'bookrestaurant_duckdb.duckdb'
+      threads: 24
