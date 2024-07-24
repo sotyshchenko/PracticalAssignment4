@@ -1,0 +1,7 @@
+version: 2
+
+macros:
+  - name: calculate_monthly_revenue
+    description: "Calculate monthly revenue from book orders using DuckDB."
+  - name: calculate_top_selling_books
+    description: "Calculate top selling books using DuckDB."

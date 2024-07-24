@@ -35,4 +35,9 @@ models:
         description: "The month for which the revenue is calculated"
       - name: monthly_revenue
         description: "The total revenue for the month"
+  - name: test_calculate_monthly_revenue
+    description: "A model to calculate top selling books during set period"
+    columns:
+      - name: book_title
+      - name: total_sold
 
