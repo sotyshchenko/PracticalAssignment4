@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: regular_customers_emails
+    columns:
+      - name: customer_id
+        description: This is a unique identifier for a customer
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: Customer's first name
+      - name: last_name
+        description: Customer's last name
+      - name: email
+        description: Customer's email
+  - name: manager_employees
+    columns:
+      - name: employee_id
+        description: This is a unique identifier for an employee
+      - name: first_name
+        description: Employee's first name
+      - name: last_name
+        description: Employee's last name
+      - name: phone
+        description: Employee's phone
+  - name: books_by_genres
+    columns:
+      - name: book_genre
+      - name: book_count
+  - name: test_calculate_monthly_revenue
+    description: "A model to calculate monthly revenue for a selected month"
+    columns:
+      - name: month
+        description: "The month for which the revenue is calculated"
+      - name: monthly_revenue
+        description: "The total revenue for the month"
+
