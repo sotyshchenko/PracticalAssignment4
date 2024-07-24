@@ -140,6 +140,7 @@ def create_tables(connection):
                 handled_by VARCHAR,
                 order_date DATE,
                 status VARCHAR,
+                quantity INT,
                 FOREIGN KEY(book_id) REFERENCES raw_books(id),
                 FOREIGN KEY(customer_id) REFERENCES raw_customers(id),
                 FOREIGN KEY(handled_by) REFERENCES raw_employees(id)
@@ -155,7 +156,7 @@ def create_tables(connection):
                 description TEXT
             )
         ''')
-        print("Table menu_categories created successfully")
+        print("Table raw_menu_categories created successfully")
 
         # Create raw_menu table
         connection.execute('''
@@ -342,14 +343,14 @@ def insert_data():
 
     # Insert data into raw_book_orders table
     book_orders_query = """
-    INSERT INTO raw_book_orders (id, book_id, customer_id, handled_by, order_date, status) 
-    VALUES (?, ?, ?, ?, ?, ?)
+    INSERT INTO raw_book_orders (id, book_id, customer_id, handled_by, order_date, status, quantity) 
+    VALUES (?, ?, ?, ?, ?, ?, ?)
     """
     order_statuses = ['Completed', 'Pending', 'Cancelled']
     book_orders_data = [
         (str(uuid.uuid4()), random.choice(books_data)[0], random.choice(customers_data)[0],
-         random.choice(employees_data)[0], fake.date_this_year(), random.choice(order_statuses))
-        for _ in range(100000)
+         random.choice(employees_data)[0], fake.date_this_year(), random.choice(order_statuses), random.randint(1, 100))
+        for _ in range(70000)
     ]
     execute_many_queries(connection, book_orders_query, book_orders_data, "raw_book_orders")
 
